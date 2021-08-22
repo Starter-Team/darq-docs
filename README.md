@@ -72,6 +72,98 @@ Returns json data about new acoount and token.
 }
 ```
 
+
+## Associate Account method
+
+Returns json data about associate account.
+
+### **URL**
+
+/hedera/associateAccount
+
+### **Method**
+
+`POST`
+
+### **Data Params (body)**
+
+| Name     | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| masterAccountId  | The Hedera account of the presenter who is creating a new user account.   | String   |
+| masterPrivateKey   | The Hedera private key of the presenter who is creating a new user account. | String  |
+| mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean  |
+| tokenId   | The Id of the Token with which we are performing the operation. | String  |
+| accountId   | The Hedera account of the presenter who wants to associate the account. | String  |
+| accountPrivateKey   | The Hedera private key of the presenter who wants to associate the account | String  |
+
+> ⚠ When creating a new account an existing account will need to pay for the transaction fee to create the new account.
+
+### **Response**
+| Name       | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| result | Transaction result status    | String    |
+| consensus   | Returns the receipt of a transaction | Object |
+
+
+### Sample Request
+
+```json
+{ 
+	"masterAccountId" : "0.0.000000", 
+	"masterPrivateKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"mainnet": false,
+	"tokenId": "0.0.0000000",
+	"accountId" : "0.0.000000", 
+	"accountPrivateKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}
+```
+
+### **Success Response:**
+
+**Status:** 200 **Content:**
+
+```json
+{ 
+	"result" : "SUCCES", 
+	"consensus" : {
+	   "status": SUCCESS,
+	   "exchangeRate": {
+	     "hbars": 1,
+	     "cents": 12, 
+	     "expirationTime": 2100-01-01T00:00:00Z
+	   }, 
+	   "accountId": null,
+	   "fileId": null, 
+	   "contractId": null, 
+	   "topicId": null, 
+	   "tokenId": null, 
+	   "topicSequenceNumber": null, 
+	   "topicRunningHash": null, 
+	   "totalSupply": 0, 
+	   "scheduleId": 0.0.2531
+	}
+}
+```
+
+### **Error Response:**
+
+**Code:** 404 NOT FOUND **Content:**
+
+```json
+{ 
+	"msg" : "Page not found"
+}
+```
+
+**Code:** 500 SERVER ERROR **Content:** 
+
+```json
+{ 
+	"msg" : "Environment variables masterAccountId and masterPrivateKey must be present"
+}
+```
+
+
 ## Create Token method
 
 Returns json data about new token.
