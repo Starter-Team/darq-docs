@@ -227,9 +227,7 @@ Returns json data about transfer a Token BAR.
 }
 ```
 
-## Other Methods
-
-## Submit Message method
+## Create Topic method
 
 Returns json data with a topicId and a receipt or a messageQuery
 ### **URL**
@@ -244,8 +242,8 @@ Returns json data with a topicId and a receipt or a messageQuery
 
 | Name     | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| masterAccountId  | The Hereda account of the presenter who is creating a new user account.   | String   |
-| masterPrivateKey   | The Hereda private key of the presenter who is creating a new user account. | String  |
+| masterAccountId  | The Hedera account of the presenter who is creating a new user account.   | String   |
+| masterPrivateKey   | The Hedera private key of the presenter who is creating a new user account. | String  |
 | mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean  |
 | message| Descriptive message to describe the operation | String|
 | topicId (optional)| Unique identifier for a topic (used by the consensus service) | String|
@@ -254,15 +252,15 @@ Returns json data with a topicId and a receipt or a messageQuery
 ### **Response (without a topicId)**
 | Name       | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| topicId| Unique identifier for a topic created by Hereda | String |
+| topicId| Unique identifier for a topic created by Hedera | String |
 | receipt| The transaction receipt gives you information about a transaction in Hedera including whether or not the transaction reached consensus on the network   | JSON|
 
 
 ### **Response (with a topicId)**
 | Name       | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| topicId| Unique identifier for a topic created by Hereda | String |
-| messageQuery| Object created by Hereda when submitting a transaction| String |
+| topicId| Unique identifier for a topic created by Hedera| String |
+| messageQuery| Object created by Hedera when submitting a transaction| JSON|
 
 ### Sample Request
 
@@ -284,10 +282,10 @@ Returns json data with a topicId and a receipt or a messageQuery
 	"receipt" : 
 	{ 
 		"status"= "SUCCESS", 
-		"exchangeRate"=ExchangeRate{ 
+		"exchangeRate":{ 
 				"hbars":1, 
 				"cents":12, 
-				"expirationTime":2100-01-01T00:00:00Z }, 
+				"expirationTime":"2100-01-01T00:00:00Z" }, 
 		"accountId":null, 
 		"fileId":null, 
 		"contractId":null, 
@@ -326,6 +324,99 @@ OR
 ```json
 { 
 	"msg" : "Environment variables myAccountId and myPrivateKey must be present"
+}
+```
+
+
+##  Get Topic Info method
+
+Returns json data with a topicInfo and messages
+### **URL**
+
+/hedera/getTopicInfo
+
+### **Method**
+
+`POST`
+
+### **Data Params (body)**
+
+| Name     | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| masterAccountId  | The Hedera account of the presenter who is creating a new user account.   | String   |
+| masterPrivateKey   | The Hedera private key of the presenter who is creating a new user account. | String  |
+| mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean  |
+| topicId | Unique identifier for a topic (used by the consensus service) | String|
+
+
+### **Response**
+| Name       | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| topicInfo| Returns the specific values for a topic | JSON|
+| messages| Return the information of the messages of the topic with its contents   | JSON|
+
+
+### Sample Request
+
+```json
+{ 
+	"masterAccountId" : "0.0.000000", 
+	"masterPrivateKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"mainnet": false,
+	"topicId": "0.0.102736"
+}
+```
+
+### **Success Response:**
+
+**Status:** 200 **Content:**
+
+```json
+{ 
+	"topicInfo" : 
+	{ 
+		"topicId":0.0.102736, 
+		"topicMemo":, 
+		"runningHash":[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0. 0, 0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 
+		0, 0, 0, 0, 0, 0 ], 
+		"sequenceNumber":0, 
+		"expirationTime":"2021-02-09T03:17:07.258292001Z", 
+		"adminKey":null, 
+		"submitKey":null, 
+		"autoRenewPeriod":"PT2160H", 
+		"autoRenewAccountId":null
+	},
+	"messages":
+	[
+		{
+			"message": 
+			{
+			    "operation": "create",
+			    "did": "did:hedera:mainnet:7Prd74ry1Uct87nZqL3ny7aR7Cg46JamVbJgk8azVgUm;hedera:mainnet:fid=0.0.123",
+			    "didDocumentBase64": "ewogICJAY29udGV...9tL3ZjLyIKICAgIH0KICBdCn0=",
+			    "timestamp": "2020-04-23T14:37:43.511Z"
+			},
+			"contents": "Se creo un nuevo tema"
+		}
+	]
+}
+```
+
+### **Error Response:**
+
+**Code:** 404 NOT FOUND **Content:**
+
+```json
+{ 
+	"msg" : "Page not found"
+}
+```
+
+**Code:** 500 SERVER ERROR **Content:** 
+
+```json
+{ 
+	"msg" : "Environment variables masterAccountId and masterPrivateKey must be present"
 }
 ```
 
