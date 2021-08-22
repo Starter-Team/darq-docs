@@ -281,7 +281,7 @@ Returns json data with a topicId and a receipt or a messageQuery
 	"topicId" : "0.0.000000", 
 	"receipt" : 
 	{ 
-		"status"= "SUCCESS", 
+		"status": "SUCCESS", 
 		"exchangeRate":{ 
 				"hbars":1, 
 				"cents":12, 
@@ -294,7 +294,7 @@ Returns json data with a topicId and a receipt or a messageQuery
 		"topicSequenceNumber":null, 
 		"topicRunningHash":null, 
 		"totalSupply":0, 
-		"scheduleId":0.0.2531 
+		"scheduleId":"0.0.2531"
 	}
 }
 ```
@@ -375,7 +375,7 @@ Returns json data with a topicInfo and messages
 { 
 	"topicInfo" : 
 	{ 
-		"topicId":0.0.102736, 
+		"topicId": "0.0.102736", 
 		"topicMemo":, 
 		"runningHash":[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0. 0, 0,0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 
 		0, 0, 0, 0, 0, 0 ], 
