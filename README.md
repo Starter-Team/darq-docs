@@ -16,8 +16,8 @@ Returns json data about new acoount and token.
 
 | Name     | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| masterAccountId  | The Hereda account of the presenter who is creating a new user account.   | String   |
-| masterPrivateKey   | The Hereda private key of the presenter who is creating a new user account. | String  |
+| masterAccountId  | The Hedera account of the presenter who is creating a new user account.   | String   |
+| masterPrivateKey   | The Hedera private key of the presenter who is creating a new user account. | String  |
 | mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean  |
 | initialBalance   | The initial balance of the account, transferred from the operator account, in Hbar. | Number  |
 
@@ -26,9 +26,9 @@ Returns json data about new acoount and token.
 ### **Response**
 | Name       | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| accountId | New account created by Hereda   | String    |
-| publicKey   | New public key created by Hereda | String |
-| privateKey   | New private key created by Hereda | String |
+| accountId | New account created by Hedera   | String    |
+| publicKey   | New public key created by Hedera | String |
+| privateKey   | New private key created by Hedera | String |
 
 
 ### Sample Request
@@ -103,7 +103,7 @@ Returns json data about transfer a token.
 | receiverPreBalance  | The previous balance of the Hedera private key of the presenter who is receiving a token. | Number |
 | senderPostBalance  | The post balance in the Hedera account of the presenter who is transferring a token. | Number    |
 | receiverPostBalance  | The post balance in the Hedera account of the presenter who is receiving a token. | Number |
-| result  | Result of the operation carried out by inherit | String |
+| result  | Result of the operation carried out by Hedera | String |
 
 
 ### Sample Request
@@ -181,7 +181,7 @@ Returns json data about transfer a Token BAR.
 | receiverPreBalance  | The previous balance of the Hedera private key of the presenter who is receiving a token BAR. | Number |
 | senderPostBalance  | The post balance in the Hedera account of the presenter who is transferring a token BAR. | Number    |
 | receiverPostBalance  | The post balance in the Hedera account of the presenter who is receiving a token BAR. | Number |
-| result  | Result of the operation carried out by inherit | String |
+| result  | Result of the operation carried out by Hedera | String |
 
 
 ### Sample Request
