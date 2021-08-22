@@ -128,18 +128,18 @@ Returns json data with a topicId and a receipt or a messageQuery
 	{ 
 		"status"= "SUCCESS", 
 		"exchangeRate"=ExchangeRate{ 
-				"hbars"=1, 
-				"cents"=12, 
-				"expirationTime"=2100-01-01T00:00:00Z }, 
-		"accountId"=null, 
-		"fileId"=null, 
-		"contractId"=null, 
-		"topicId"="0.0.000000", 
-		"tokenId"=null, 
-		"topicSequenceNumber"=null, 
-		"topicRunningHash"=null, 
-		"totalSupply"=0, 
-		"scheduleId"=0.0.2531 
+				"hbars":1, 
+				"cents":12, 
+				"expirationTime":2100-01-01T00:00:00Z }, 
+		"accountId":null, 
+		"fileId":null, 
+		"contractId":null, 
+		"topicId":"0.0.000000", 
+		"tokenId":null, 
+		"topicSequenceNumber":null, 
+		"topicRunningHash":null, 
+		"totalSupply":0, 
+		"scheduleId":0.0.2531 
 	}
 }
 ```
