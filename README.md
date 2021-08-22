@@ -72,6 +72,192 @@ Returns json data about new acoount and token.
 }
 ```
 
+## Create Token method
+
+Returns json data about new token.
+
+### **URL**
+
+/hedera/createToken
+
+### **Method**
+
+`POST`
+
+### **Data Params (body)**
+
+| Name     | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| masterAccountId  | The Hedera account of the presenter who is creating a new token.    | String    |
+| masterPrivateKey   | The Hedera account of the presenter who is creating a new token.  | String    |
+| ownerAccountId  | The Hedera account of the presenter who is creating a new token.   | String    |
+| ownerPrivateKey   | The Hedera private key of the presenter who is creating a new token. | String    |
+| mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean |
+| tokenName   | The publicly visible name of the token. The token name is not unique. Maximum of 100 characters. | String    |
+| tokenSymbol   | The publicly visible token symbol. The token symbol is not unique. Maximum of 100 characters. | String    |
+| tokenSupply   | Specifies the initial supply of tokens to be put in circulation. | Number    |
+| tokenDecimals   | The number of decimal places a token is divisible by | Number    |
+
+
+### **Response**
+| Name       | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| tokenId | New token id created by Hereda   | String    |
+| adminPublicKey   | New admin public key created by Hereda | String |
+| adminPrivateKey   | New admin private key created by Hereda | String |
+| treasuryPublicKey   | New treasury public key created by Hereda | String |
+| treasuryPrivateKey   | New treasury private key created by Hereda | String |
+| supplyPublicKey   | New supply public key created by Hereda | String |
+| supplyPrivateKey   | New supply private key created by Hereda | String |
+| freezePublicKey   | New freeze public key created by Hereda | String |
+| freezePrivateKey   | New freeze private key created by Hereda | String |
+| wipePublicKey   | New wipe public key created by Hereda | String |
+| wipePrivateKey   | New wipe private key created by Hereda | String |
+
+
+### Sample Request
+
+```json
+{ 
+	"masterAccountId" : "0.0.0000000",
+	"masterPrivateKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"ownerAccountId" : "0.0.0000000",
+	"ownerPrivateKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"mainnet": false,
+	"tokenName": "TokenNameCoin",
+	"tokenSymbol": "TNC",
+	"tokenSupply": 1000000,
+	"tokenDecimals": 2,
+}
+```
+
+### **Success Response:**
+
+**Status:** 200 **Content:**
+
+```json
+{ 
+	"tokenId" : "0.0.0000000", 
+	"adminPublicKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"adminPrivateKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"treasuryPublicKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"treasuryPrivateKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"supplyPublicKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"supplyPrivateKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"freezePublicKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"freezePrivateKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"wipePublicKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"wipePrivateKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+}
+```
+
+### **Error Response:**
+
+**Code:** 404 NOT FOUND **Content:**
+
+```json
+{ 
+	"msg" : "Page not found"
+}
+```
+
+**Code:** 500 SERVER ERROR **Content:** 
+
+```json
+{ 
+	"msg" : "Environment variables masterAccountId and masterPrivateKey must be present"
+}
+```
+
+## Account Info method
+
+A query that returns the account balance for the specified account.
+
+### **URL**
+
+/hedera/accountInfo
+
+### **Method**
+
+`POST`
+
+### **Data Params (body)**
+
+| Name     | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| masterAccountId  | The Hedera account of the user (Hedera credentials).   | String    |
+| masterPrivateKey   | The Hedera private key of the user (Hedera credentials). | String    |
+| accountId  | The account id of the user to be queried.   | String    |
+| mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean |
+
+
+### **Response**
+| Name       | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| hbar | The account balance for the specified account.   | String    |
+| tokens   | New admin public key created by Hereda | Object |
+
+
+### Sample Request
+
+```json
+{ 
+	"masterAccountId" : "0.0.0000000",
+	"masterPrivateKey" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"accountId" : "0.0.0000000",
+	"mainnet": false,
+}
+```
+
+### **Success Response:**
+
+**Status:** 200 **Content:**
+
+```json
+{ 
+	"hbar" : "50 ℏ",
+	"tokens": {
+		"0.0.390433": "100",
+		"0.0.390437": "5000",
+		"0.0.390438": "5000",
+		"0.0.394589": "498820",
+		"0.0.397095": "2000000",
+		"0.0.460246": "19980",
+		"0.0.460374": "500000",
+		"0.0.478510": "99999785",
+		"0.0.481115": "49999999980",
+		"0.0.528921": "100000000",
+		"0.0.532880": "10000000",
+		"0.0.552732": "999999999759",
+		"0.0.1569727": "100000",
+		"0.0.1569728": "10000000",
+		"0.0.1569729": "12390128321",
+		"0.0.1569731": "12312312312",
+		"0.0.1858435": "100000",
+		"0.0.1858473": "1000000000",
+		"0.0.1882329": "2313213"
+    }
+}
+```
+
+### **Error Response:**
+
+**Code:** 404 NOT FOUND **Content:**
+
+```json
+{ 
+	"msg" : "Page not found"
+}
+```
+
+**Code:** 500 SERVER ERROR **Content:** 
+
+```json
+{ 
+	"msg" : "Environment variables masterAccountId and masterPrivateKey must be present"
+}
+```
+
 ## Transfer Token method
 
 Returns json data about transfer a token.
