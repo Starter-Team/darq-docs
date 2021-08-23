@@ -194,17 +194,17 @@ Returns json data about new token.
 ### **Response**
 | Name       | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| tokenId | New token id created by Hereda   | String    |
-| adminPublicKey   | New admin public key created by Hereda | String |
-| adminPrivateKey   | New admin private key created by Hereda | String |
-| treasuryPublicKey   | New treasury public key created by Hereda | String |
-| treasuryPrivateKey   | New treasury private key created by Hereda | String |
-| supplyPublicKey   | New supply public key created by Hereda | String |
-| supplyPrivateKey   | New supply private key created by Hereda | String |
-| freezePublicKey   | New freeze public key created by Hereda | String |
-| freezePrivateKey   | New freeze private key created by Hereda | String |
-| wipePublicKey   | New wipe public key created by Hereda | String |
-| wipePrivateKey   | New wipe private key created by Hereda | String |
+| tokenId | New token id created by Hedera   | String    |
+| adminPublicKey   | New admin public key created by Hedera | String |
+| adminPrivateKey   | New admin private key created by Hedera | String |
+| treasuryPublicKey   | New treasury public key created by Hedera | String |
+| treasuryPrivateKey   | New treasury private key created by Hedera | String |
+| supplyPublicKey   | New supply public key created by Hedera | String |
+| supplyPrivateKey   | New supply private key created by Hedera | String |
+| freezePublicKey   | New freeze public key created by Hedera | String |
+| freezePrivateKey   | New freeze private key created by Hedera | String |
+| wipePublicKey   | New wipe public key created by Hedera | String |
+| wipePrivateKey   | New wipe private key created by Hedera | String |
 
 
 ### Sample Request
@@ -287,7 +287,7 @@ A query that returns the account balance for the specified account.
 | Name       | Description     | Type     |
 | :------------- | :----------: | -----------: |
 | hbar | The account balance for the specified account.   | String    |
-| tokens   | New admin public key created by Hereda | Object |
+| tokens   | The list of tokens assigned to this account. | Object |
 
 
 ### Sample Request
