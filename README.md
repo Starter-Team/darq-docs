@@ -2,7 +2,7 @@
 
 ## Create Account method
 
-Returns json data about new acoount and token.
+Returns json data about new account/wallet.
 
 ### **URL**
 
@@ -18,8 +18,8 @@ Returns json data about new acoount and token.
 | :------------- | :----------: | -----------: |
 | masterAccountId  | The Hedera account of the presenter who is creating a new user account.   | String   |
 | masterPrivateKey   | The Hedera private key of the presenter who is creating a new user account. | String  |
-| mainnet   | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean  |
-| initialBalance   | The initial balance of the account, transferred from the operator account, in Hbar. | Number  |
+| mainnet   | Defines the environment for the request, whether it is a test/testnet (false)  or production/mainnet (true) environment. | Boolean  |
+| initialBalance   | The initial balance of the account, transfered from the operator account, in Hbar. | Number  |
 
 > ⚠ When creating a new account an existing account will need to pay for the transaction fee to create the new account.
 
@@ -431,7 +431,7 @@ Returns json data about transfer a token.
 
 ## Transfer TBAR method
 
-Returns json data about transfer a Token BAR.
+Returns json data about transfer tBAR.
 
 ### **URL**
 
@@ -445,20 +445,20 @@ Returns json data about transfer a Token BAR.
 
 | Name     | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| senderAccountId  | The Hedera account of the presenter who is transfering  a token BAR.   | String   |
-| senderPrivateKey  | The Hedera private key of the presenter who is transfering  a token BAR. | String  |
-| receiverAccountId  | The Hedera account of the presenter who is receiving a token BAR. | String  |
-| amount  | Amount of token BAR being transferred. | Number | 
+| senderAccountId  | The Hedera account of the presenter who is transfering  tBAR.   | String   |
+| senderPrivateKey  | The Hedera private key of the presenter who is transfering  tBAR. | String  |
+| receiverAccountId  | The Hedera account of the presenter who is receiving tBAR. | String  |
+| amount  | Amount of tBAR being transferred. | Number | 
 | mainnet  | Defines the environment in which to develop the transaction, whether it is a test (false)  or production (true) environment. | Boolean  |
 
 
 ### **Response**
 | Name       | Description     | Type     |
 | :------------- | :----------: | -----------: |
-| senderPreBalance  | The previous balance of the Hedera account of the presenter who is transferring a token BAR.  | Number    |
-| receiverPreBalance  | The previous balance of the Hedera private key of the presenter who is receiving a token BAR. | Number |
-| senderPostBalance  | The post balance in the Hedera account of the presenter who is transferring a token BAR. | Number    |
-| receiverPostBalance  | The post balance in the Hedera account of the presenter who is receiving a token BAR. | Number |
+| senderPreBalance  | The previous balance of the Hedera account of the presenter who is transferring tBAR.  | Number    |
+| receiverPreBalance  | The previous balance of the Hedera private key of the presenter who is receiving tBAR. | Number |
+| senderPostBalance  | The post balance in the Hedera account of the presenter who is transferring tBAR. | Number    |
+| receiverPostBalance  | The post balance in the Hedera account of the presenter who is receiving tBAR. | Number |
 | result  | Result of the operation carried out by Hedera | String |
 
 
