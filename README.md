@@ -698,3 +698,86 @@ Returns json data with a topicInfo and messages
 }
 ```
 
+## Create NFT method
+
+Returns a json with the file id and token id of the respective created file and token (NFT) in the hedera network, the token is tied to the account that created it.
+
+### **URL**
+
+/hedera/createNFT
+
+### **Method**
+
+`POST`
+
+### **Data Params (body)**
+
+| Name     | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| masterAccountId  | The Hedera account of the presenter who is creating a new multiple NFT.   | String   |
+| publicKey| The Hedera public key of the presenter who is creating a new  multiple NFT. | String  |
+| masterPrivateKey   | The Hedera private key of the presenter who is creating a new  multiple NFT. | String  |
+| mainnet   | Defines the environment for the request, whether it is a test/testnet (false)  or production/mainnet (true) environment. | Boolean  |
+| file| File in Base64 format from which you want to create a multiple NFT. | String  |
+| tokenName| This is the name of the token (NFT) attached to the new file, this name is not an identifier, it is merely descriptive. | String  |
+| amount| Number of copies available for this token (NFT). | Number |
+
+> ⚠ The file must be less than 1000KB.
+
+### **Response**
+| Name       | Description     | Type     |
+| :------------- | :----------: | -----------: |
+| fileId | This is the file identifier in the Hedera network  | String    |
+| tokenId| This is the token identifier in the Hedera network | String |
+
+
+### Sample Request
+
+```json
+{
+    "masterAccountId": "0.0.000000",
+    "publicKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "masterPrivateKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "mainnet" : false,
+    "file": "This is the file content in Base64",
+    "tokenName": "token(NFT) example",
+    "amount" : 60  
+}
+```
+
+### **Success Response:**
+
+**Status:** 200 **Content:**
+
+```json
+{
+  "fileId": "0.0.000000",
+  "tokenId": "0.0.000000"
+}
+```
+
+### **Error Response:**
+
+**Code:** 404 NOT FOUND **Content:**
+
+```json
+{ 
+	"msg" : "Page not found"
+}
+```
+
+**Code:** 500 SERVER ERROR **Content:** 
+
+```json
+{ 
+	"msg" : "Environment variables masterAccountId and masterPrivateKey must be present"
+}
+```
+
+**Other Code:** 500 SERVER ERROR **Content:** 
+
+```json
+{ 
+	"msg" : "File is too heavy"
+}
+```
